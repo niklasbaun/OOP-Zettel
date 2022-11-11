@@ -26,6 +26,4 @@ public class Main {
        System.out.println("Enter Method 3");
        System.out.println("Exit Method 3");
     }
-
-
 }

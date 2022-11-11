@@ -4,6 +4,7 @@ public class Aufgabe2_3 {
         System.out.println("----------------------");
         System.out.println("Testfall 1");
         wechselGeld(6.25);
+        System.out.println("Error zuviel Geld wird erwartet");
         System.out.println("----------------------");
 
         //Testfall2, weniger Geld als notwendig
