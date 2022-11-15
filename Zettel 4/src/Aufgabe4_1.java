@@ -1,35 +1,52 @@
 public class Aufgabe4_1 {
 
-
+    /**
+     * @param args the command line arguments
+     * @param args
+     * main method calls showBillboard with different messages to test the method
+     */
     public static void main(String[] args) {
+        //tests for showBillboard
+        //test 1
         showBillboard("This is Zettel 4 of OOP");
+        //test 2
         showBillboard("Testing your own code is important" );
+        //test 3
         showBillboard("Testing your program with all kinds of different input values is important!");
+        //test 4 Message longer then 84 characters
+        showBillboard("This is a Message with more than 84 characters, to show that the method will display an Error Message");
+        //test 5 Message empty
+        showBillboard("");
     }
-    /*
 
-                    \|||||/
-                    ( O O )
-    |---------ooO-----(_)-----------------|
-    |                                     |
-    | Testing your own code is important! |
-    |                                     |
-    |-------------------------Ooo---------|
-                    |_| |_|
-                     || ||
-                    ooO Ooo
-    */
-
+    /**
+     * @param message
+     * showBillboard method displays a message in a billboard style with Klaus holding the sign
+     * if the message is longer than 84 characters, the Billboard will display an error message
+     * if the message is shorter than 19, the Billboard will display an error message
+     */
     static void showBillboard(String message){
         int num =numOfStringChars(message);
+        String display = "";
+        if (19 < num && num < 84){
+            display = message;
+        } else if (num < 19){
+            display = "Error: Message was too short";
+            num = 28;
+        }
+        else{
+            display = "Error: Message was too long";
+            num = 28;
+        }
+
         int row = 0;
-        int offSetHair = (numOfStringChars(message)/2)-2;
-        int offSetEyes = (numOfStringChars(message)/2)-2;
-        int offSetHand1 = (numOfStringChars(message)/2)-9;
-        int offSetHand2 = (numOfStringChars(message)/2)+8;
-        int offSetLegs1 = (numOfStringChars(message)/2)-2;
-        int offSetLegs2 = (numOfStringChars(message)/2)-1;
-        int offSetFeet = (numOfStringChars(message)/2)-2;
+        int offSetHair = (num/2)-2;
+        int offSetEyes = (num/2)-2;
+        int offSetHand1 = (num/2)-9;
+        int offSetHand2 = (num/2)+8;
+        int offSetLegs1 = (num/2)-2;
+        int offSetLegs2 = (num/2)-1;
+        int offSetFeet = (num/2)-2;
         while (row < 10) {
             //1st row displaying the hair
             if (row == 0) {
@@ -86,7 +103,7 @@ public class Aufgabe4_1 {
             } else if (row == 4) {
                 System.out.print("\n|");
                 System.out.print(" ");
-                System.out.print(message);
+                System.out.print(display);
                 System.out.print(" ");
                 System.out.print("|");
                 row++;
@@ -145,9 +162,14 @@ public class Aufgabe4_1 {
         }
     }
 
-    static int numOfStringChars(String s) {
+    /**
+     * @param message
+     * @return integer
+     * numOfStringChars helpermethod which returns the number of characters in a string
+     */
+    static int numOfStringChars(String message){
         int count = 0;
-        for(int i = 0; i < s.length(); i++) {
+        for(int i = 0; i < message.length(); i++) {
                 count += 1;
         }
         return count;
