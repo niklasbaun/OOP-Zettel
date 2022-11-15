@@ -3,13 +3,13 @@ public class Aufgabe3_1 {
         myTest();
     }
 
-    /*
+    /**
     method to calculate the power of a number
-    @param x the base
-    @param n the exponent
+    @param basis the base
+    @param exponent the exponent
     @return the result of x^n
      */
-    static double power(final double basis, final int exponent) {
+     static double power(final double basis, final int exponent) {
         double result = 1;
         if(exponent<0) {
             int amount=exponent* - 1;
@@ -25,8 +25,12 @@ public class Aufgabe3_1 {
                 Count-= 1;
                 }
             return result ;
-            }
         }
+    }
+
+    /**
+     * method to test if the power method works
+     */
     static void myTest(){
         final boolean b = power(15,5) == 759375;
         if(b) System.out.println("Test passed");

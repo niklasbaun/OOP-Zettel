@@ -2,6 +2,7 @@ public class Aufgabe3_2 {
 
     public static void main(String[] args) {
         System.out.println(postage(1, 2, 3, 4));
+        testPostage();
     }
 
 
@@ -33,7 +34,13 @@ public class Aufgabe3_2 {
             return -1;
         }
     }
-
+    /**
+     * Checks if a number is between two other numbers
+     * @param value the number to check
+     * @param lower the lower bound
+     * @param upper the upper bound
+     * @return true if the number is between the bounds, false otherwise
+     */
     static boolean isBetween(int value, int lower, int upper) {
         if (value >= lower && value <= upper) {
             return true;
