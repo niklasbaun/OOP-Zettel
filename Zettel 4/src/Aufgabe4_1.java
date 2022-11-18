@@ -114,9 +114,16 @@ public class Aufgabe4_1 {
                 }
                 System.out.print(display);
                 int j = msgLength/2;
-                while ( j < (num/2)+1) {
-                    System.out.print(" ");
-                    j++;
+                if (msgLength == 0){
+                    while ( j < (num/2)+2) {
+                        System.out.print(" ");
+                        j++;
+                    }
+                }else {
+                    while ( j < (num/2)+1) {
+                        System.out.print(" ");
+                        j++;
+                    }
                 }
                 System.out.print("|");
                 row++;
