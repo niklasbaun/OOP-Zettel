@@ -23,30 +23,35 @@ public class Aufgabe4_1 {
      * @param message
      * showBillboard method displays a message in a billboard style with Klaus holding the sign
      * if the message is longer than 84 characters, the Billboard will display an error message
-     * if the message is shorter than 19, the Billboard will display an error message
      */
     static void showBillboard(String message){
         int num =numOfStringChars(message);
+        int msgLength = 0;
         String display = "";
         if (19 < num && num < 84){
             display = message;
+            msgLength = numOfStringChars(message);
+        //if message is shorter than the minimum width of the board held by Klaus it will be set to the minimum width
         } else if (num < 19){
-            display = "Error: Message was too short";
-            num = 28;
-        }
-        else{
+            num = 17;
+            msgLength = numOfStringChars(message);
+        } else if (num == 0) {
+            num = 17;
+            msgLength = 2;
+        } else{
             display = "Error: Message was too long";
-            num = 28;
+            num = 27;
+            msgLength = 27;
         }
 
         int row = 0;
-        int offSetHair = (num/2)-2;
-        int offSetEyes = (num/2)-2;
-        int offSetHand1 = (num/2)-9;
-        int offSetHand2 = (num/2)+8;
-        int offSetLegs1 = (num/2)-2;
-        int offSetLegs2 = (num/2)-1;
-        int offSetFeet = (num/2)-2;
+        int offSetHair = (num/2)-1;
+        int offSetEyes = (num/2)-1;
+        int offSetHand1 = (num/2)-8;
+        int offSetHand2 = (num/2)+9;
+        int offSetLegs1 = (num/2)-1;
+        int offSetLegs2 = (num/2);
+        int offSetFeet = (num/2)-1;
         while (row < 10) {
             //1st row displaying the hair
             if (row == 0) {
@@ -70,19 +75,19 @@ public class Aufgabe4_1 {
             } else if (row == 2) {
                 System.out.print("\n|");
                 int i = 0;
-                while ( i < offSetHand1 ) {
+                while ( i < offSetHand1) {
                     System.out.print("-");
                     i++;
                 }
                 System.out.print("ooO-----(_)");
                 int j = 0;
                 if (num % 2 ==0){
-                    while ( j < (num/2)) {
+                    while ( j < (num/2)-1) {
                         System.out.print("-");
                         j++;
                     }
                 }else {
-                    while ( j < (num/2)+1) {
+                    while ( j < (num/2)) {
                         System.out.print("-");
                         j++;
                     }
@@ -93,7 +98,7 @@ public class Aufgabe4_1 {
             } else if (row == 3) {
                 System.out.print("\n|");
                 int i = 0;
-                while ( i < num+2) {
+                while (i < num+2) {
                     System.out.print(" ");
                     i++;
                 }
@@ -102,9 +107,17 @@ public class Aufgabe4_1 {
             //fifth row displaying the message
             } else if (row == 4) {
                 System.out.print("\n|");
-                System.out.print(" ");
+                int i = msgLength/2;
+                while ( i < (num/2)+1) {
+                    System.out.print(" ");
+                    i++;
+                }
                 System.out.print(display);
-                System.out.print(" ");
+                int j = msgLength/2;
+                while ( j < (num/2)+1) {
+                    System.out.print(" ");
+                    j++;
+                }
                 System.out.print("|");
                 row++;
             //sixth row displaying the bord

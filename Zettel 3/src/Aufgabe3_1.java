@@ -33,7 +33,11 @@ public class Aufgabe3_1 {
      */
     static void myTest(){
         final boolean b = power(15,5) == 759375;
-        if(b) System.out.println("Test passed");
-        else System.out.println("Test failed");
+        if(b) {
+            System.out.println("Test passed");
+        }
+        else {
+            System.out.println("Test failed");
+        }
     }
 }
