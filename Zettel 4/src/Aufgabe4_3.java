@@ -14,7 +14,7 @@ public class Aufgabe4_3 {
         if (a <= 0){
             return 0;
         }else {
-            return krtH(a, k, d, 10);
+            return krtH(a, k, d, a);
         }
     }
 
