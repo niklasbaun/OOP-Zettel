@@ -1,6 +1,6 @@
 public class Aufgabe4_3 {
     public static void main(String[] args) {
-        krt(4, 2, 0.5);
+        System.out.println(krt(4, 2, 0.001));
     }
 
     /**
@@ -14,7 +14,7 @@ public class Aufgabe4_3 {
         if (a <= 0){
             return 0;
         }else {
-            return krtH(a, k, d, 1);
+            return krtH(a, k, d, 0);
         }
     }
 
@@ -29,10 +29,10 @@ public class Aufgabe4_3 {
     static double krtH(double a, double k, double d, double x_n) {
         if (d == 0) {
             return a;
-        } else if((x_n-(x_n-1) < d) ) {
+        } else if(Math.abs(x_n-(x_n-1)) < d) {
             return x_n;
         } else {
-            return krtH(a, k, d, (1 / k) * ((k - 1) * x_n + a / Math.pow(x_n, k - 1)));
+            return krtH(a, k, d, ((1 / k) * ((k - 1) * (x_n+1) + a / Math.pow(x_n+1, k - 1)))+x_n);
         }
     }
 

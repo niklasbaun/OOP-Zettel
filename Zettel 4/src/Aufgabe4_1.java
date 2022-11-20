@@ -20,8 +20,8 @@ public class Aufgabe4_1 {
     }
 
     /**
-     * @param message
      * showBillboard method displays a message in a billboard style with Klaus holding the sign
+     * @param message
      * if the message is longer than 84 characters, the Billboard will display an error message
      */
     static void showBillboard(String message){

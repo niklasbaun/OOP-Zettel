@@ -9,7 +9,6 @@ public class Aufgabe4_2 {
 
     /**
      * converts a given decimal number to a binary number
-     *
      * @param n
      * @return binary
      */
@@ -17,18 +16,20 @@ public class Aufgabe4_2 {
         String binary = "";
         if (n < 0) {
             return "Error";
+        } else if (n == 0) {
+            return "0";
         } else {
             while (n > 0) {
                 binary = n % 2 + binary;
                 n = n / 2;
             }
             return binary;
+
         }
     }
 
     /**
      * converts a given decimal number to a octal number
-     *
      * @param n
      * @return octal
      */
@@ -36,6 +37,8 @@ public class Aufgabe4_2 {
         String octal = "";
         if (n < 0) {
             return "Error";
+        } else if (n == 0) {
+            return "0";
         } else {
             while (n > 0) {
                 octal = n % 8 + octal;
@@ -63,7 +66,9 @@ public class Aufgabe4_2 {
             return null;
         } else {
             //check if number is negative
-            if (n < 0) {
+            if (n == 0){
+                return "00000000";
+            } else if (n < 0) {
                 //make positive
                 n = n * -1;
                 //convert to binary
@@ -96,7 +101,6 @@ public class Aufgabe4_2 {
                         break;
                     }
                 }
-
                 //return the twos complement
                 return twosComplement;
 
@@ -113,19 +117,8 @@ public class Aufgabe4_2 {
                         binary = "0" + binary;
                     }
                 }
-
                 //binary is the same as ones complement
-                onesComplement = binary;
-                //add 1 to the inverted bits, to create twos complement out of ones complement
-                twosComplement = onesComplement;
-                for (i = 7; i >= 0; i--) {
-                    if (onesComplement.charAt(i) == '1') {
-                        twosComplement = twosComplement.substring(0, i) + '0' + twosComplement.substring(i + 1);
-                    } else {
-                        twosComplement = twosComplement.substring(0, i) + '1' + twosComplement.substring(i + 1);
-                        break;
-                    }
-                }
+                twosComplement = binary;
                 //return the twos complement
                 return twosComplement;
             }
