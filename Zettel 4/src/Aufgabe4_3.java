@@ -1,6 +1,6 @@
 public class Aufgabe4_3 {
     public static void main(String[] args) {
-        System.out.println(krt(4, 2, 0.001));
+        testKrt();
     }
 
     /**
@@ -14,7 +14,7 @@ public class Aufgabe4_3 {
         if (a <= 0){
             return 0;
         }else {
-            return krtH(a, k, d, 0);
+            return krtH(a, k, d, 10);
         }
     }
 
@@ -27,41 +27,40 @@ public class Aufgabe4_3 {
      * @return the nth root of a given number
      */
     static double krtH(double a, double k, double d, double x_n) {
-        if (d == 0) {
-            return a;
-        } else if(Math.abs(x_n-(x_n-1)) < d) {
-            return x_n;
+        if(Math.abs(x_n-((1 / k) * ((k - 1) * x_n + a / Math.pow(x_n, k - 1)))) < d) {
+            return (1 / k) * ((k - 1) * x_n + a / Math.pow(x_n, k - 1));
         } else {
-            return krtH(a, k, d, ((1 / k) * ((k - 1) * (x_n+1) + a / Math.pow(x_n+1, k - 1)))+x_n);
+            return krtH(a, k, d, ((1 / k) * ((k - 1) * x_n + a / Math.pow(x_n, k - 1))));
         }
     }
 
     /**
      * tests the method krt with different values
+     * values where calculated with https://www.wolframalpha.com/input
      */
     static void testKrt(){
-        double test1Value = krt(2, 2, 0.0001);
-        if (test1Value == 1.4142){
+        double test1Value = krt(2, 2, 0.00004);
+        if (test1Value == 1.4142135623730950){
             System.out.println("Test 1 passed");
         }else{
             System.out.println("Test 1 failed");
-            System.out.println("Expected: 1.4142");
+            System.out.println("Expected: 1.4142135623730950");
             System.out.println("Actual: " + test1Value);
         }
-        double test2Value = krt(2, 3, 0.0001);
-        if (test2Value == 1.2599){
+        double test2Value = krt(5, 3, 0.003);
+        if (test2Value == 1.7099759466766969){
             System.out.println("Test 2 passed");
         }else{
             System.out.println("Test 2 failed");
-            System.out.println("Expected: 1.2599");
+            System.out.println("Expected: 1.7099759466766969");
             System.out.println("Actual: " + test2Value);
         }
-        double test3Value = krt(2, 4, 0.0001);
-        if (test3Value == 1.1892){
+        double test3Value = krt(70, 4, 0.006);
+        if (test3Value == 2.892507608519077){
             System.out.println("Test 3 passed");
         }else{
             System.out.println("Test 3 failed");
-            System.out.println("Expected: 1.1892");
+            System.out.println("Expected: 2.892507608519077");
             System.out.println("Actual: " + test3Value);
         }
     }
