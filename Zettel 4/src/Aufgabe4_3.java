@@ -12,10 +12,10 @@ public class Aufgabe4_3 {
     }
 
     static double krtH(double a, double k, double d, double x_n) {
-        if (x_n == 0) {
+        if (d == 0) {
             return a;
         } else {
-            return (1/k)*((k-1)+x_n+(1/krtH(a, k, d, x_n+1)));
+            return (1/k)*((k-1)+d+(1/krtH(a, k, d++, d * x_n)));
         }
     }
 
