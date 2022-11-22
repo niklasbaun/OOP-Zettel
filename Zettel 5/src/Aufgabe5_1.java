@@ -1,7 +1,7 @@
 public class Aufgabe5_1 {
 
     public static void main(String[] args) {
-
+        testAll();
     }
 
     static void testAll(){
@@ -149,13 +149,19 @@ public class Aufgabe5_1 {
      * @return
      */
     static float getMinimum(float[] numbers) {
-        return getMinimumH(numbers, numbers.length());
+        return getMinimumH(numbers, numbers.length);
     }
-    static float getMinimumH(float[] numbers, int size) {
+    /**
+     * helper method for getMinimum
+     * @param numbers
+     * @param length
+     * @return smallest number in the array
+     */
+    static float getMinimumH(float[] numbers, int length) {
         if (numbers.length == 1) {
             return numbers[0];
         } else {
-            return Math.min(numbers[size-1], getMinimumH(numbers, size-1));
+            return Math.min(numbers[length], getMinimumH(numbers, length-1));
         }
     }
     /**
