@@ -1,9 +1,18 @@
 public class Aufgabe5_2 {
     public static void main(String[] args) {
-
+        testAll();
     }
 
     static void testAll() {
+        double testArrayGPS[] = {-20.0, 0.0,200.0, -18.5, -0.647,200.577, -16.85, -1.237,
+                201.16, -15.035, -1.763, 201.739, -13.038, -2.219,
+                202.299, -10.842, -2.599, 202.824, -8.426, -2.894,
+                203.289, -5.769, -3.096, 203.667, -2.846, -3.195, 203.918,
+                0.369, -3.182, 203.998, 3.861, -3.205, 203.85, 7.284,
+                -3.176, 203.469, 10.638, -3.209, 202.868, 13.926, -3.175,
+                202.06, 17.147, -3.209,201.059, 20, -3.174, 199.877};
+        //test for distance
+        double testdistance = 0.0;
 
     }
 
@@ -19,8 +28,12 @@ public class Aufgabe5_2 {
         double[] y = getEveryThirdElement(gps);
         gps = removeFirstElement(gps);
         double[] z = getEveryThirdElement(gps);
-        //calculate the distance between the points
-        return Math.sqrt(Math.pow(x[x.length] - x[0], 2) + Math.pow(y[y.length] - y[0], 2) + Math.pow(z[z.length] - z[0], 2));
+        //calculate the distance between the  each of the points
+        double distance = 0;
+        for (int i = 0; i < x.length - 1; i++) {
+            distance += Math.sqrt(Math.pow(x[i + 1] - x[i], 2) + Math.pow(y[i + 1] - y[i], 2) + Math.pow(z[i + 1] - z[i], 2));
+        }
+        return distance;
     }
 
     /**
@@ -36,7 +49,9 @@ public class Aufgabe5_2 {
         gps = removeFirstElement(gps);
         double[] z = getEveryThirdElement(gps);
         //calculate the velocity between the points
-        return distance(gps) / (x.length - 1);
+        //is length of the array - 1 because the first element is the start point
+        int time = x.length-1;
+        return distance(gps) / (time);
     }
 
     /**
@@ -45,8 +60,62 @@ public class Aufgabe5_2 {
      * @return maxVelocity in m/s
      */
     static double maxVelocity(double[] gps) {
+        //split the array into three arrays for x, y and z coordinates using the helper methods
+        double[] x = getEveryThirdElement(gps);
+        gps = removeFirstElement(gps);
+        double[] y = getEveryThirdElement(gps);
+        gps = removeFirstElement(gps);
+        double[] z = getEveryThirdElement(gps);
+        //calculate the velocities between the single points
+        double[] velocities = new double[x.length - 1];
+        //calcualte the velocities between the points
+        for (int i = 0; i < velocities.length; i++) {
+            velocities[i] = Math.sqrt(Math.pow(x[i + 1] - x[i], 2) + Math.pow(y[i + 1] - y[i], 2) + Math.pow(z[i + 1] - z[i], 2));
+        }
+        //find the maximum velocity
+        double maxVelocity = 0;
+        for (int i = 1; i < velocities.length; i++) {
+            if (velocities[i] > maxVelocity) {
+                maxVelocity = velocities[i];
+            }
+        }
+        return maxVelocity;
+    }
 
-        return 0;
+    /**
+     * method which finds coordinates between two given coordinates
+     * @param gps
+     * @param start
+     * @param end
+     * @return array with coordinates between start and end
+     */
+    static double[] partialGPS(double[] gps, double[] start, double[] end) {
+        //split the array into three arrays for x, y and z coordinates using the helper methods
+        double[] x = getEveryThirdElement(gps);
+        gps = removeFirstElement(gps);
+        double[] y = getEveryThirdElement(gps);
+        gps = removeFirstElement(gps);
+        double[] z = getEveryThirdElement(gps);
+        //find the start and end point
+        int startPoint = 0;
+        int endPoint = 0;
+        for (i = 0, i < x.length; i++) {
+            if (x[i] == start[0] && y[i] == start[1] && z[i] == start[2]) {
+                startPoint = i;
+            }
+            if (x[i] == end[0] && y[i] == end[1] && z[i] == end[2]) {
+                endPoint = i;
+            }
+        }
+        //create a new array with the coordinates between start and end
+        double[] partialGPS = new double[(endPoint - startPoint) * 3];
+        //fill the array with the coordinates
+        for (i = startPoint; int j = 0;i < endPoint; i++, j += 3) {
+            partialGPS[j] = x[i];
+            partialGPS[j + 1] = y[i];
+            partialGPS[j + 2] = z[i];
+        }
+        return partialGPS;
     }
 
     /**
