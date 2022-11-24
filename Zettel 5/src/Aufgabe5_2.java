@@ -191,8 +191,8 @@ public class Aufgabe5_2 {
 
     /**
      * calculates the total distance run
-     * @param gps
-     * @return distance
+     * @param gps array with the gps coordinates
+     * @return distance the runner moved in meters
      */
     static double distance(double[] gps){
         //split the array into three arrays for x, y and z coordinates using the helper methods
@@ -212,8 +212,8 @@ public class Aufgabe5_2 {
 
     /**
      * calculates the average velocity in m/s
-     * @param gps
-     * @return velocity in m/s
+     * @param gps array with the gps coordinates
+     * @return velocity the average velocity in m/s
      */
     static double velocity(double[] gps){
         //calculate the velocity between the points
@@ -224,7 +224,7 @@ public class Aufgabe5_2 {
 
     /**
      * calculates the maximum velocity in m/s
-     * @param gps
+     * @param gps array with the gps coordinates
      * @return maxVelocity in m/s
      */
     static double maxVelocity(double[] gps) {
@@ -253,9 +253,9 @@ public class Aufgabe5_2 {
 
     /**
      * method which finds coordinates between two given coordinates
-     * @param gps
-     * @param start
-     * @param end
+     * @param gps the array with the gps coordinates
+     * @param start the start coordinates
+     * @param end the end coordinates
      * @return array with coordinates between start and end
      */
     static double[] partialGPS(double[] gps, double[] start, double[] end) {
@@ -296,7 +296,7 @@ public class Aufgabe5_2 {
 
     /**
      * Helper method to return the every third element of an array
-     * @param arr
+     * @param arr an array
      * @return array with every third element
      */
     static double[] getEveryThirdElement(double[] arr) {
@@ -311,7 +311,7 @@ public class Aufgabe5_2 {
 
     /**
      * Helper method to remove the 1st element of an array
-     * @param arr
+     * @param arr an array
      * @return array without the 1st element
      */
     static double[] removeFirstElement(double[] arr) {

@@ -165,7 +165,7 @@ public class Aufgabe5_1 {
      * @param numbers
      * @return
      */
-    static float getMinimum(float[] numbers) {
+    public static float getMinimum(float[] numbers) {
         return getMinimumH(numbers, numbers.length, numbers[0]);
     }
     /**
@@ -174,7 +174,7 @@ public class Aufgabe5_1 {
      * @param length
      * @return smallest number in the array
      */
-    static float getMinimumH(float[] numbers, int length, float min) {
+    private static float getMinimumH(float[] numbers, int length, float min) {
         if (length <= 0) {
             return min;
         } else {

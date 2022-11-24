@@ -28,8 +28,8 @@ public class Aufgabe4_3 {
      */
     static double krtH(double a, double k, double d, double x_n) {
         //eher als Var einführen
-        if(Math.abs(x_n-((1 / k) * ((k - 1) * x_n + a / Math.pow(x_n, k - 1)))) < d) {
-            return (1 / k) * ((k - 1) * x_n + a / Math.pow(x_n, k - 1));
+        if(Math.abs(x_n- ((1 / k) * ((k - 1) * x_n + a / Math.pow(x_n, k - 1)))) < d) {
+            return ((1 / k) * ((k - 1) * x_n + a / Math.pow(x_n, k - 1)));
         } else {
             return krtH(a, k, d, ((1 / k) * ((k - 1) * x_n + a / Math.pow(x_n, k - 1))));
         }
