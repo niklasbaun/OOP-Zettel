@@ -187,7 +187,7 @@ public class Aufgabe5_1 {
     /**
      * finds the largest number in the array using a while-Loop
      * @param numbers
-     * @return
+     * @return max number in the array
      */
     static float getMaximum(float[] numbers){
         float max = numbers[0];

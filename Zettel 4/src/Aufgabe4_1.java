@@ -35,9 +35,11 @@ public class Aufgabe4_1 {
         } else if (num < 19){
             num = 17;
             msgLength = numOfStringChars(message);
+        //if message has no content at all
         } else if (num == 0) {
             num = 17;
             msgLength = 2;
+        //else the message was longer than 84 characters
         } else{
             display = "Error: Message was too long";
             num = 27;

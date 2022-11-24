@@ -33,7 +33,7 @@ public class Aufgabe4_2 {
      * @param n
      * @return octal
      */
-    private static String toOctal(int n) {
+    static String toOctal(int n) {
         String octal = "";
         if (n < 0) {
             return "Error";
