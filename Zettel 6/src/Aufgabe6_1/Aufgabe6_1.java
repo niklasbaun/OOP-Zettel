@@ -51,7 +51,7 @@ public class Aufgabe6_1 {
         library.removeDVD("The Two Towers");
 
         System.out.println(library.doIOwn(dvd3));
-        System.out.println(library.doIOwn(dvd2));
+        System.out.println(library.doIOwn(dvd6));
 
 
     }
