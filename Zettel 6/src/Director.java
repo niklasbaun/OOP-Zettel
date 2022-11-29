@@ -10,4 +10,16 @@ public class Director {
         this.surname = surname;
         this.birthdate = birthdate;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
 }
