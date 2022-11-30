@@ -30,12 +30,8 @@ public class Library {
     public Date getDate() {
         return date;
     }
-    public String[] getDvds() {
-        String[] dvdTitles = new String[dvds.length];
-        for (int i = 0; i < dvds.length; i++) {
-            dvdTitles[i] = dvds[i].getTitle();
-        }
-        return dvdTitles;
+    public DVD[] getDvds() {
+        return dvds;
     }
 
     /**
@@ -59,9 +55,9 @@ public class Library {
             newDvds[i] = dvds[i];
         }
         newDvds[dvds.length] = dvd;
-        dvds = newDvds;
+        this.dvds = newDvds;
         //change the date of the library
-        setDate();
+        this.setDate();
     }
 
     /**
@@ -69,18 +65,18 @@ public class Library {
      * @param title
      */
     public void removeDVD (String title) {
-        DVD[] newDvds = new DVD[dvds.length - 1];
+        DVD[] newDvds = new DVD[this.dvds.length - 1];
         int j = 0;
-        for (int i = 0; i < dvds.length-1; i++) {
-            if (dvds[i].getTitle().equals(title)) {
+        for (int i = 0; i < this.dvds.length-1; i++) {
+            if (this.dvds[i].getTitle().equals(title)) {
                 continue;
             }
-            newDvds[j] = dvds[i];
+            newDvds[j] = this.dvds[i];
             j++;
         }
-        dvds = newDvds;
+        this.dvds = newDvds;
         //change the date of the library
-        setDate();
+        this.setDate();
     }
 
     /**
@@ -89,8 +85,8 @@ public class Library {
      * @return true if i own the dvd, false if i don't
      */
     public boolean doIOwn (DVD dvd) {
-        for (int i = 0; i < dvds.length; i++) {
-            if (dvds[i].equals(dvd)) {
+        for (int i = 0; i < this.dvds.length; i++) {
+            if (this.dvds[i].equals(dvd)) {
                 return true;
             }
         }

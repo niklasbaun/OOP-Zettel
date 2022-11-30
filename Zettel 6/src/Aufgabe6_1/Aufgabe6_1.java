@@ -26,13 +26,13 @@ public class Aufgabe6_1 {
         Director director4 = new Director("Tony", "Gilroy", new Date(1958, 10, 20));
 
         // create DVDs
-        DVD dvd1 = new DVD("Lord of the Rings: The Fellowship of the Ring", "1", director1, new Actor[]{actor1, actor2, actor3, actor4, actor5, actor6, actor7});
-        DVD dvd2 = new DVD("Lord of the Rings: The Two Towers", "2",director1, new Actor[]{actor1, actor2, actor3, actor4, actor5, actor6, actor7, actor11});
-        DVD dvd3 = new DVD("Lord of the Rings: The Return of the King", "3",  director1, new Actor[]{actor1, actor2, actor3, actor4, actor5, actor6, actor7, actor11});
-        DVD dvd4 = new DVD("The Bourne Identity", "4", director2, new Actor[]{actor8, actor9, actor10});
-        DVD dvd5 = new DVD("The Bourne Supremacy", "5", director2, new Actor[]{actor8, actor9, actor11});
-        DVD dvd6 = new DVD("The Bourne Ultimatum", "6", director2, new Actor[]{actor8, actor12});
-        DVD dvd8 = new DVD("Jason Bourne", "7", director4, new Actor[]{actor8, actor13});
+        DVD dvd1 = new DVD("Lord of the Rings: The Fellowship of the Ring", "0000-0000-401A-0000-7-0000-000A-V", director1, new Actor[]{actor1, actor2, actor3, actor4, actor5, actor6, actor7});
+        DVD dvd2 = new DVD("Lord of the Rings: The Two Towers", "0000-0001-DAA4-0000-O-0000-0008-L",director1, new Actor[]{actor1, actor2, actor3, actor4, actor5, actor6, actor7, actor11});
+        DVD dvd3 = new DVD("Lord of the Rings: The Return of the King", "0000-0001-DAA3-0000-J-0000-0009-0",  director1, new Actor[]{actor1, actor2, actor3, actor4, actor5, actor6, actor7, actor11});
+        DVD dvd4 = new DVD("The Bourne Identity", "0000-0000-F733-0000-5-0000-0000-M", director2, new Actor[]{actor8, actor9, actor10});
+        DVD dvd5 = new DVD("The Bourne Supremacy", "0000-0001-5EB1-0000-S-0000-0009-9", director2, new Actor[]{actor8, actor9, actor11});
+        DVD dvd6 = new DVD("The Bourne Ultimatum", "0000-0001-BDCB-0000-M-0000-0006-V", director2, new Actor[]{actor8, actor12});
+        DVD dvd8 = new DVD("Jason Bourne", "0000-0004-755D-0000-Z-0000-0000-6", director4, new Actor[]{actor8, actor13});
 
         //create library
         DVD[] dvds = new DVD[0];
