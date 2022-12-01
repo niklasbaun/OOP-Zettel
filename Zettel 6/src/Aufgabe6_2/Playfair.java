@@ -140,9 +140,9 @@ public class Playfair {
         String sEncrypted = "";
         //encrypt the word
         for(int i=0; i < sClean.length(); i++){
-            if(i%2 == 0){
-                Position pos1 = findInSquare(sClean.charAt(i));
-                Position pos2 = findInSquare(sClean.charAt(i+1));
+            if(i%3 == 0){
+                Position pos1 = this.findInSquare(sClean.charAt(i));
+                Position pos2 = this.findInSquare(sClean.charAt(i+1));
                 //if both are in the same row
                 if(pos1.getX() == pos2.getX()){
                     sEncrypted = sEncrypted + playfairSquare[pos1.getX()][(pos1.getY()+1)%5] + playfairSquare[pos2.getX()][(pos2.getY()+1)%5] ;
