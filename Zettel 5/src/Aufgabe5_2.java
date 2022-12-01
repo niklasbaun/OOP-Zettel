@@ -283,8 +283,8 @@ public class Aufgabe5_2 {
             //create a new array with the coordinates between start and end
             double[] partialGPS = new double[(endPoint - startPoint) * 3];
             //fill the array with the coordinates
+            int j = 0;
             for (int s = startPoint;  s < endPoint; s++ ) {
-                int j = 0;
                 partialGPS[j] = x[s];
                 partialGPS[j + 1] = y[s];
                 partialGPS[j + 2] = z[s];

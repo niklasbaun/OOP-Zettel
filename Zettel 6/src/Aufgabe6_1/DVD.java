@@ -1,7 +1,9 @@
 package Aufgabe6_1;
 
 import Aufgabe6_1.Director;
-
+/**
+ * @author Walter, Annika; Baun, Niklas
+ */
 public class DVD {
     final private String title;
     //ISBN is called ISAN for movies

@@ -1,7 +1,9 @@
 package Aufgabe6_1;
 
 import java.util.Date;
-
+/**
+ * @author Walter, Annika; Baun, Niklas
+ */
 public class Aufgabe6_1 {
     public static void main(String[] args) {
         // create a new library with content
@@ -36,23 +38,27 @@ public class Aufgabe6_1 {
 
         //create library
         DVD[] dvds = new DVD[0];
-        Library library = new Library("My Library", dvds);
+        Library myLib = new Library("My Library", dvds);
         //add all DVDs to the library
-        library.addDVD(dvd1);
-        library.addDVD(dvd2);
-        library.addDVD(dvd3);
-        library.addDVD(dvd4);
-        library.addDVD(dvd5);
-        library.addDVD(dvd6);
-        library.addDVD(dvd8);
+        myLib.addDVD(dvd1);
+        myLib.addDVD(dvd2);
+        myLib.addDVD(dvd3);
+        myLib.addDVD(dvd4);
+        myLib.addDVD(dvd5);
+        myLib.addDVD(dvd6);
+        myLib.addDVD(dvd8);
 
         //remove some DVDs from the library
-        library.removeDVD("The Bourne Ultimatum");
-        library.removeDVD("The Two Towers");
+        myLib.removeDVD("The Bourne Ultimatum");
+        myLib.removeDVD("The Two Towers");
 
-        System.out.println(library.doIOwn(dvd3));
-        System.out.println(library.doIOwn(dvd6));
+        System.out.println(myLib.doIOwn(dvd3));
+        System.out.println(myLib.doIOwn(dvd6));
 
+
+    }
+
+    public static void testLib(){
 
     }
 }

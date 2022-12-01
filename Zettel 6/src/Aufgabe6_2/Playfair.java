@@ -1,5 +1,8 @@
-package Playfair;
+package Aufgabe6_2;
 
+/**
+ * @author Walter, Annika; Baun, Niklas
+ */
 public class Playfair {
     private final char[][] playfairSquare ;
     private final String Alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ";
@@ -91,24 +94,66 @@ public class Playfair {
                 sClean = sClean + s.charAt(i);
             }
         }
-        //create pairs
+        //create pairs of the chars in sClean
         for(int i=0; i < sClean.length(); i++ ){
-            //if there would be the same char twice in a pair
-            if(sClean.charAt(i) == sClean.charAt(i+1)) {
-                sPair = sPair + sClean.charAt(i) + "X ";
-            //if in the last pair there would only be one char
-            } else if () {
-
-            //else put pairs together from chars of string sClean
-            }else {
-                sPair = sPair + sClean.charAt(i) + sClean.charAt(i+1) + " ";
-                //to go two characters forward not only one
-                i++;
+            if(i%2 == 0){
+                sPair = sPair + sClean.charAt(i);
+            }
+            else{
+                if(sClean.charAt(i) == sClean.charAt(i-1)){
+                    sPair = sPair + "X" + sClean.charAt(i);
+                }
+                else{
+                    sPair = sPair + sClean.charAt(i);
+                }
             }
         }
+        //if the last char is alone, add an A
+        if(sPair.length()%2 != 0){
+            sPair = sPair + "A";
+        }
+        //separat the pairs with a space
+        for(int i=0; i < sPair.length(); i++){
+            if(i%2 == 0){
+                sUpper = sUpper + sPair.charAt(i);
+            }
+            else{
+                sUpper = sUpper + sPair.charAt(i) + " ";
+            }
+        }
+        //return the string in uppercase
+        return toUpperCase(sUpper);
+    }
 
-        sUpper = toUpperCase(sClean);
-        return sUpper;
+    /**
+     * method to encrypt a string with the playfair rules
+     *             - if the string is empty, return null
+     *             - if the string is not empty, return the encrypted string
+     * @param word the string
+     * @return the encrypted string
+     */
+    public String encode(String word){
+        String sClean = cleanWord(word);
+        String sEncrypted = "";
+        //encrypt the word
+        for(int i=0; i < sEncrypted.length(); i++){
+            if(i%2 == 0){
+                Position pos1 = findInSquare(sEncrypted.charAt(i));
+                Position pos2 = findInSquare(sEncrypted.charAt(i+1));
+                //if both are in the same row
+                if(pos1.getX() == pos2.getX()){
+                    sEncrypted = sEncrypted.substring(0, i) + playfairSquare[pos1.getX()][(pos1.getY()+1)%5] + playfairSquare[pos2.getX()][(pos2.getY()+1)%5] + sEncrypted.substring(i+2);
+                }
+                //of both are in the same column
+                else if(pos1.getY() == pos2.getY()){
+                    sEncrypted = sEncrypted.substring(0, i) + playfairSquare[(pos1.getX()+1)%5][pos1.getY()] + playfairSquare[(pos2.getX()+1)%5][pos2.getY()] + sEncrypted.substring(i+2);
+                }
+                else{
+                    sEncrypted = sEncrypted.substring(0, i) + playfairSquare[pos1.getX()][pos2.getY()] + playfairSquare[pos2.getX()][pos1.getY()] + sEncrypted.substring(i+2);
+                }
+            }
+        }
+        return sEncrypted;
     }
 
     /**

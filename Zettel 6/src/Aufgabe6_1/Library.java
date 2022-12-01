@@ -1,9 +1,10 @@
 package Aufgabe6_1;
-
-import Aufgabe6_1.DVD;
-
 import java.time.LocalDateTime;
 import java.util.Date;
+
+/**
+ * @author Walter, Annika; Baun, Niklas
+ */
 public class Library {
     private String name;
     private Date date;
@@ -35,12 +36,8 @@ public class Library {
     }
 
     /**
-     * setter methods for library name, date and dvds
-     * @param name, date or dvds
+     * setter method for library date
      */
-    public void setName(String name) {
-        this.name = name;
-    }
     public void setDate() {
         this.date = Date.from(LocalDateTime.now().atZone(java.time.ZoneId.systemDefault()).toInstant());
     }
@@ -74,15 +71,16 @@ public class Library {
             newDvds[j] = this.dvds[i];
             j++;
         }
+        //set dvds the new dvd array
         this.dvds = newDvds;
         //change the date of the library
         this.setDate();
     }
 
     /**
-     * method to find if i own a dvd
+     * method to find if I own a dvd
      * @param dvd
-     * @return true if i own the dvd, false if i don't
+     * @return true if I own the dvd, false if i don't
      */
     public boolean doIOwn (DVD dvd) {
         for (int i = 0; i < this.dvds.length; i++) {
