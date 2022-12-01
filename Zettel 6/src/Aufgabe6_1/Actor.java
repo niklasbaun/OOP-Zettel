@@ -1,10 +1,12 @@
 package Aufgabe6_1;
 
 import java.util.Date;
-
+/**
+ * @author Walter, Annika; Baun, Niklas
+ */
 public class Actor {
     final private String name;
-    final private String surname;
+    final private String  surname;
     final private Date birthdate;
     /**
      * constructor for actor class

@@ -1,7 +1,9 @@
 package Aufgabe6_1;
 
 import java.util.Date;
-
+/**
+ * @author Walter, Annika; Baun, Niklas
+ */
 public class Director {
     final private String name;
     final private String surname;

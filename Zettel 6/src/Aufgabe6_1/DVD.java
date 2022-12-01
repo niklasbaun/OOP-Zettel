@@ -1,23 +1,26 @@
 package Aufgabe6_1;
 
 import Aufgabe6_1.Director;
-
+/**
+ * @author Walter, Annika; Baun, Niklas
+ */
 public class DVD {
     final private String title;
-    final private String ISBN;
+    //ISBN is called ISAN for movies
+    final private String ISAN;
     final private Director director;
     final private Actor[] actors;
 
     /**
      * constructor for dvd class
      * @param title
-     * @param ISBN
+     * @param ISAN
      * @param director
      * @param actors
      */
-    public DVD (String title, String ISBN, Director director, Actor[] actors){
+    public DVD (String title, String ISAN, Director director, Actor[] actors){
         this.title = title;
-        this.ISBN = ISBN;
+        this.ISAN = ISAN;
         this.director = director;
         this.actors = actors;
     }
@@ -29,8 +32,8 @@ public class DVD {
     public String getTitle() {
         return title;
     }
-    public String getISBN() {
-        return ISBN;
+    public String getISAN() {
+        return ISAN;
     }
     public Director getDirector() {
         return director;
