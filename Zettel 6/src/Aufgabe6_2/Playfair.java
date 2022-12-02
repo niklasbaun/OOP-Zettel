@@ -133,23 +133,26 @@ public class Playfair {
      * @return the encrypted string
      */
     public String encode(String word){
+        if (word.length() == 0){
+            return null;
+        }
         String sClean = cleanWord(word);
         String sEncrypted = "";
         //encrypt the word
-        for(int i=0; i < sEncrypted.length(); i++){
-            if(i%2 == 0){
-                Position pos1 = findInSquare(sEncrypted.charAt(i));
-                Position pos2 = findInSquare(sEncrypted.charAt(i+1));
+        for(int i=0; i < sClean.length(); i++){
+            if(i%3 == 0){
+                Position pos1 = this.findInSquare(sClean.charAt(i));
+                Position pos2 = this.findInSquare(sClean.charAt(i+1));
                 //if both are in the same row
                 if(pos1.getX() == pos2.getX()){
-                    sEncrypted = sEncrypted.substring(0, i) + playfairSquare[pos1.getX()][(pos1.getY()+1)%5] + playfairSquare[pos2.getX()][(pos2.getY()+1)%5] + sEncrypted.substring(i+2);
+                    sEncrypted = sEncrypted + playfairSquare[pos1.getX()][(pos1.getY()+1)%5] + playfairSquare[pos2.getX()][(pos2.getY()+1)%5] ;
                 }
                 //of both are in the same column
                 else if(pos1.getY() == pos2.getY()){
-                    sEncrypted = sEncrypted.substring(0, i) + playfairSquare[(pos1.getX()+1)%5][pos1.getY()] + playfairSquare[(pos2.getX()+1)%5][pos2.getY()] + sEncrypted.substring(i+2);
+                    sEncrypted = sEncrypted + playfairSquare[(pos1.getX()+1)%5][pos1.getY()] + playfairSquare[(pos2.getX()+1)%5][pos2.getY()];
                 }
                 else{
-                    sEncrypted = sEncrypted.substring(0, i) + playfairSquare[pos1.getX()][pos2.getY()] + playfairSquare[pos2.getX()][pos1.getY()] + sEncrypted.substring(i+2);
+                    sEncrypted = sEncrypted + playfairSquare[pos1.getX()][pos2.getY()] + playfairSquare[pos2.getX()][pos1.getY()];
                 }
             }
         }
