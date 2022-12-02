@@ -31,7 +31,7 @@ public class Library {
     public Date getDate() {
         return date;
     }
-    public DVD[] getDvds() {
+    public DVD[] getDVDs() {
         return dvds;
     }
 
