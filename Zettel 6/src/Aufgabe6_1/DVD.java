@@ -2,7 +2,7 @@ package Aufgabe6_1;
 
 import Aufgabe6_1.Director;
 /**
- * @author Walter, Annika; Baun, Niklas
+ * @author Walter, Annika; Baun, Niklas; Mahlberg, Kilian
  */
 public class DVD {
     final private String title;
