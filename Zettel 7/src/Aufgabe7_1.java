@@ -45,4 +45,20 @@ public class Aufgabe7_1 {
             System.out.println(primes[i]);
         }
     }
+
+    static void testPrimesUpTo(){
+        int[] primes = primesUpTo(100);
+        int[] primesExpected = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+        if (primes.length != primesExpected.length) {
+            System.out.println("testPrimesUpTo failed: length of primes is not as expected");
+            return;
+        }
+        for (int i = 0; i < primes.length; i++) {
+            if (primes[i] != primesExpected[i]) {
+                System.out.println("testPrimesUpTo failed: primes is not as expected");
+                return;
+            }
+        }
+        System.out.println("testPrimesUpTo passed");
+    }
 }
