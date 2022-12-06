@@ -6,7 +6,7 @@ import java.util.Date;
  * @author Walter, Annika; Baun, Niklas; Mahlberg, Kilian
  */
 public class Library {
-    private String name;
+    private final String name;
     private Date date;
     private DVD[] dvds;
 
