@@ -1,8 +1,9 @@
 package Aufgabe6_2;
 
 /**
- * @author Walter, Annika; Baun, Niklas
+ * @author Walter, Annika; Baun, Niklas; Mahlberg, Kilian
  */
+
 public class Position {
     private final int x;
     private final int y;

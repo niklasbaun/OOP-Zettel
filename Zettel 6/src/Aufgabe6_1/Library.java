@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * @author Walter, Annika; Baun, Niklas
+ * @author Walter, Annika; Baun, Niklas; Mahlberg, Kilian
  */
 public class Library {
     private final String name;
@@ -58,37 +58,45 @@ public class Library {
     }
 
     /**
-     * method to remove a dvd from the library by its title
-     * @param title
+     *countDVDs count the number of DVDs with the given title in the collection.
+     *@param title is the title we are looking for.
+     *@return the number of copies in the collection.
      */
-    public void removeDVD (String title) {
-        DVD[] newDvds = new DVD[this.dvds.length - 1];
-        int j = 0;
-        for (int i = 0; i < this.dvds.length-1; i++) {
-            if (this.dvds[i].getTitle().equals(title)) {
-                continue;
+    private int countDVDs(final String title){
+        int count = 0;
+        for(int i = 0; i < dvds.length; i++) {
+            if(dvds[i].getTitle() == title) {
+                count++;
             }
-            newDvds[j] = this.dvds[i];
-            j++;
         }
-        //set dvds the new dvd array
-        this.dvds = newDvds;
-        //change the date of the library
-        this.setDate();
+        return count;
     }
 
     /**
-     * method to find if I own a dvd
-     * @param dvd
-     * @return true if I own the dvd, false if i don't
+     *removeDVD removes all DVDs with the given title from the collection. It also changes the date to current date.
+     *@param title is the title we are looking for.
      */
-    public boolean doIOwn (DVD dvd) {
-        for (int i = 0; i < this.dvds.length; i++) {
-            if (this.dvds[i].equals(dvd)) {
-                return true;
+    public void removeDVD(final String title) {
+        final int count = countDVDs(title);
+        DVD[] newDVDs = new DVD[dvds.length - count];
+        int newCollIndex = 0;
+        for(int i = 0; i < dvds.length; i++) {
+            if(dvds[i].getTitle() != title) {
+                newDVDs[newCollIndex] = dvds[i];
+                newCollIndex++;
             }
         }
-        return false;
+        this.dvds = newDVDs;
+        date = new Date();
+    }
+
+    /**
+     *doIOwn checks if the given DVD is in our collection.
+     *@param dvd is the DVD we are looking for.
+     *@return true if we own the DVD. Otherwise false
+     */
+    public boolean doIOwn(DVD dvd) {
+        return countDVDs(dvd.getTitle()) > 0;
     }
 }
 

@@ -1,7 +1,7 @@
 package Aufgabe6_2;
 
 /**
- * @author Walter, Annika; Baun, Niklas
+ * @author Walter, Annika; Baun, Niklas; Mahlberg, Kilian
  */
 public class Playfair {
     private final char[][] playfairSquare ;
@@ -32,14 +32,14 @@ public class Playfair {
         }
         //add rest of Alphabet to the end
         for(int i=0; i<Alphabet.length(); i++) {
-            if(characterInString( codewordUpper, Alphabet.charAt(i) ) == false) {
-                codewordUpper = codewordUpper + Alphabet.charAt(i);
+            if(characterInString( sClean, Alphabet.charAt(i) ) == false) {
+                sClean = sClean + Alphabet.charAt(i);
             }
         }
         char[][] playfairSquareTemp = new char[5][5];
         for(int i=0; i<5; i++) {
             for(int j=0; j<5; j++) {
-                playfairSquareTemp[i][j] = codewordUpper.charAt(5*i+j);
+                playfairSquareTemp[i][j] = sClean.charAt(5*i+j);
             }
         }
         this.playfairSquare = playfairSquareTemp;
@@ -77,52 +77,74 @@ public class Playfair {
     }
 
     /**
-     * method to clean a string with the playfair rules
-     *      *          - remove all non-alphabetical characters
-     *      *          - if there are two identical characters in a block, insert an X between them
-     *      *          - if the string is empty, return null
-     * @param s the string
-     * @return the cleaned string
+     *removeCharacter produces a copy of a String with all appearances of the Character c removed.
+     *@param codeword is the String we are looking through.
+     *@param c is the Character we are looking for.
+     *@return the new String without c.
      */
-    private String cleanWord(String s){
-        String sUpper = "";
-        String sClean = "";
-        String sPair = "";
-        for(int i=0; i < s.length(); i++){
-            //check if ASCII value is that of letters in the alphabet
-            if(s.charAt(i)>64 && s.charAt(i)<=122){
-                sClean = sClean + s.charAt(i);
+    private String removeCharacter(final String codeword, final Character c) {
+        String result = "";
+        for(int i = 0; i < codeword.length(); i++) {
+            if(codeword.charAt(i) != c) {
+                result += codeword.charAt(i);
             }
         }
-        //create pairs of the chars in sClean
-        for(int i=0; i < sClean.length(); i++ ){
-            if(i%2 == 0){
-                sPair = sPair + sClean.charAt(i);
+        return result;
+    }
+
+    /**
+     *removeSpecial turns all letters in a word to uppercase and then removes all the special Characters.
+     *for our purpose 'J' is considered a special Character, so it is removed as well.
+     *@param word is the String we want to cleanse of special Characters and 'J'.
+     *@return word but uppercase and without special Characters or 'J'
+     */
+    private String removeSpecial(final String word) {
+        String result = word.toUpperCase();
+        Character c;
+        for(int i = 0; i < word.length();i++) {
+            c = word.charAt(i);
+            if(c < 'A' || c > 'Z' || c == 'J')
+                result = removeCharacter(result, c);
+        }
+        return result;
+    }
+
+    /**
+     *cleanWord first uses removeSpecial on word and then does the following:
+     *	"Das zu übersetzende Wort wird zunächst von Leerzeichen und Sonderzeichen bereinigt und dann
+     *	in Buchstabenpaare aufgeteilt. Taucht in einem solchen Paar ein Buchstabe zwei Mal auf, wird
+     *	ein X zwischen beide Buchstaben geschoben und der doppelte Buchstabe wird in das nächste
+     *	Paar übernommen. Wenn das letzte Paar nur einen Buchstaben enthält, wird einfach ein A an das
+     *	Wort angehängt. Beispielsweise würde MITTWOCH zu MI TX TW OC HA, aber OTTO könnte
+     *	zu OT TO werden"
+     *words in wich the last pair was just "A" posed an added challenge since the
+     *method described in 6.2 would make it "AA", which by itself cannot be unambiguously
+     *encoded since it fits rule 1 and 2. If we then split the "AA" into "AX A" we just have
+     *the same problem again.
+     *So I decided "A" just becomes "AX".
+     *@param word is the String we want to transform via the rules above.
+     *@return is a String that can be split into pairs of two different Characters.
+     */
+    private String cleanWord(final String word) {
+        String clean = removeSpecial(word);
+        String result = "";
+        Character nextOrA;
+        for(int i = 0; i < clean.length(); i += 2) {
+            if(i == clean.length() - 1) {
+                nextOrA = 'A';
             }
-            else{
-                if(sClean.charAt(i) == sClean.charAt(i-1)){
-                    sPair = sPair + "X" + sClean.charAt(i);
-                }
-                else{
-                    sPair = sPair + sClean.charAt(i);
-                }
+            else {
+                nextOrA = clean.charAt(i + 1);
+            }
+            if((clean.charAt(i) == nextOrA)) {
+                result = result + clean.charAt(i) + 'X';
+                i -= 1;
+            }
+            else {
+                result = result + clean.charAt(i) + nextOrA;
             }
         }
-        //if the last char is alone, add an A
-        if(sPair.length()%2 != 0){
-            sPair = sPair + "A";
-        }
-        //separat the pairs with a space
-        for(int i=0; i < sPair.length(); i++){
-            if(i%2 == 0){
-                sUpper = sUpper + sPair.charAt(i);
-            }
-            else{
-                sUpper = sUpper + sPair.charAt(i) + " ";
-            }
-        }
-        //return the string in uppercase
-        return toUpperCase(sUpper);
+        return result;
     }
 
     /**
@@ -139,22 +161,19 @@ public class Playfair {
         String sClean = cleanWord(word);
         String sEncrypted = "";
         //encrypt the word
-        for(int i=0; i < sClean.length(); i++){
-            if(i%3 == 0){
+        for(int i=0; i < sClean.length()-1; i+=2){
                 Position pos1 = this.findInSquare(sClean.charAt(i));
-                Position pos2 = this.findInSquare(sClean.charAt(i+1));
+                Position pos2 = this.findInSquare(sClean.charAt(i + 1));
                 //if both are in the same row
-                if(pos1.getX() == pos2.getX()){
-                    sEncrypted = sEncrypted + playfairSquare[pos1.getX()][(pos1.getY()+1)%5] + playfairSquare[pos2.getX()][(pos2.getY()+1)%5] ;
+                if (pos1.getX() == pos2.getX()) {
+                    sEncrypted = sEncrypted + playfairSquare[pos1.getX()][(pos1.getY() + 1) % 5] + playfairSquare[pos2.getX()][(pos2.getY() + 1) % 5];
                 }
                 //of both are in the same column
-                else if(pos1.getY() == pos2.getY()){
-                    sEncrypted = sEncrypted + playfairSquare[(pos1.getX()+1)%5][pos1.getY()] + playfairSquare[(pos2.getX()+1)%5][pos2.getY()];
-                }
-                else{
+                else if (pos1.getY() == pos2.getY()) {
+                    sEncrypted = sEncrypted + playfairSquare[(pos1.getX() + 1) % 5][pos1.getY()] + playfairSquare[(pos2.getX() + 1) % 5][pos2.getY()];
+                } else {
                     sEncrypted = sEncrypted + playfairSquare[pos1.getX()][pos2.getY()] + playfairSquare[pos2.getX()][pos1.getY()];
                 }
-            }
         }
         return sEncrypted;
     }
