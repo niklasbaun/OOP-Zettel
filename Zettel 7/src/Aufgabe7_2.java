@@ -2,7 +2,7 @@ public class Aufgabe7_2 {
 
     public static void main(String[] args) {
         //for testing
-        //measures the time it takes to run the method for different values of n
+        //measures the time it takes to run the method for different values
         //n = 0
         measureAndTest(0);
         //n = 1
@@ -17,6 +17,8 @@ public class Aufgabe7_2 {
         measureAndTest(42);
         //n = 50
         measureAndTest(50);
+        //n = 64
+        measureAndTest(64);
     }
 
     /**
@@ -86,6 +88,13 @@ public class Aufgabe7_2 {
         end = System.nanoTime();
         //print result
         System.out.println("fiboFast for "+ n + " : "  + fiboFast + " in " + (float)(end-start)/1000000 + "ms");
+        if (fiboFast == fiboTree){
+            System.out.println("fiboFast and fiboHelp for "+ n + " is for both: " + fiboFast);
+        } else {
+            System.out.println("fiboFast for "+ n +"is: " + fiboFast);
+            System.out.println("fiboTree for "+ n +"is: " + fiboTree);
+        }
+
     }
 
 }

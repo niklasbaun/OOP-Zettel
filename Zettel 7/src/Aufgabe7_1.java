@@ -36,21 +36,21 @@ public class Aufgabe7_1 {
                 numbers[i] = i;
             }
             //remove 0 and 1 from the array
-            int[] numbersWithout0And1 = new int[n - 2];
-            for (int i = 0; i < n - 2; i++) {
-                numbersWithout0And1[i] = numbers[i + 2];
-            }
+//            int[] numbersWithout0And1 = new int[n - 2];
+//            for (int i = 0; i < n - 2; i++) {
+//                numbersWithout0And1[i] = numbers[i + 2];
+//            }
             //remove all multiples of all numbers up to sqrt(n)+2 from the array
             // by replacing all multiples with 0
             int[] numbersWithoutMultiples = new int[n - 2];
             int counter = 0;
-            for (int i = 0; i < n - 2; i++) {
-                if (numbersWithout0And1[i] != 0) {
-                    numbersWithoutMultiples[counter] = numbersWithout0And1[i];
+            for (int i = 2; i < n - 2; i++) {
+                if (numbers[i] != 0) {
+                    numbersWithoutMultiples[counter] = numbers[i];
                     counter++;
-                    for (int j = i + 1; j < n - 2; j++) {
-                        if (numbersWithout0And1[j] % numbersWithout0And1[i] == 0) {
-                            numbersWithout0And1[j] = 0;
+                    for (int j = i + 1; j < n-2; j++) {
+                        if (numbers[j] % numbers[i] == 0) {
+                            numbers[j] = 0;
                         }
                     }
                 }
