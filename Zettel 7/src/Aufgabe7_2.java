@@ -78,11 +78,13 @@ public class Aufgabe7_2 {
         long start = System.nanoTime();
         int fiboTree = fiboTree(n);
         long end = System.nanoTime();
+        //print result
         System.out.println("fiboTree for " + n + " : "  + fiboTree + " in " + (float)(end-start)/1000000 + "ms");
         // measure fiboFast
         start = System.nanoTime();
         int fiboFast = fiboFast(n);
         end = System.nanoTime();
+        //print result
         System.out.println("fiboFast for "+ n + " : "  + fiboFast + " in " + (float)(end-start)/1000000 + "ms");
     }
 

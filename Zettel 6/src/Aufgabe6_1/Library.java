@@ -87,7 +87,7 @@ public class Library {
             }
         }
         this.dvds = newDVDs;
-        date = new Date();
+        this.setDate();
     }
 
     /**

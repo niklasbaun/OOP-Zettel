@@ -87,7 +87,7 @@ public class Aufgabe6_1 {
 
         //remove some DVDs from the library
         our_Library.removeDVD("The Bourne Ultimatum");
-        our_Library.removeDVD("The Two Towers");
+        our_Library.removeDVD("Lord of the Rings: The Two Towers");
 
         System.out.println(our_Library.doIOwn(dvd3));
         System.out.println(our_Library.doIOwn(dvd6));
