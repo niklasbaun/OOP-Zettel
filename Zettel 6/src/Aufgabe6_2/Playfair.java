@@ -103,6 +103,7 @@ public class Playfair {
         Character c;
         for(int i = 0; i < word.length();i++) {
             c = word.charAt(i);
+            //alternative regex solution: result = result.replaceAll("[^A-Za-z]", "");
             if(c < 'A' || c > 'Z' || c == 'J')
                 result = removeCharacter(result, c);
         }
@@ -117,7 +118,7 @@ public class Playfair {
      *	Paar übernommen. Wenn das letzte Paar nur einen Buchstaben enthält, wird einfach ein A an das
      *	Wort angehängt. Beispielsweise würde MITTWOCH zu MI TX TW OC HA, aber OTTO könnte
      *	zu OT TO werden"
-     *words in wich the last pair was just "A" posed an added challenge since the
+     *words in witch the last pair was just "A" posed an added challenge since the
      *method described in 6.2 would make it "AA", which by itself cannot be unambiguously
      *encoded since it fits rule 1 and 2. If we then split the "AA" into "AX A" we just have
      *the same problem again.
