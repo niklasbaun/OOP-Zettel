@@ -22,7 +22,7 @@ public class Aufgabe7_1 {
      * @param n the range
      * @return an array with all prime numbers
      */
-    private static int[] primesUpTo(int n) {
+    static int[] primesUpTo(int n) {
         //check if n is a valid number
         if (n < 0) {
             System.out.println("n must be greater than 0");
