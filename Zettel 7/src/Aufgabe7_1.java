@@ -35,20 +35,16 @@ public class Aufgabe7_1 {
             for (int i = 0; i <= n; i++) {
                 numbers[i] = i;
             }
-            //remove 0 and 1 from the array
-//            int[] numbersWithout0And1 = new int[n - 2];
-//            for (int i = 0; i < n - 2; i++) {
-//                numbersWithout0And1[i] = numbers[i + 2];
-//            }
-            //remove all multiples of all numbers up to sqrt(n)+2 from the array
-            // by replacing all multiples with 0
             int[] numbersWithoutMultiples = new int[n - 2];
             int counter = 0;
+            //start at 2, because 0 and 1 are not prime numbers
             for (int i = 2; i < n - 2; i++) {
+                //check if the number is not already 0
                 if (numbers[i] != 0) {
                     numbersWithoutMultiples[counter] = numbers[i];
                     counter++;
                     for (int j = i + 1; j < n-2; j++) {
+                        //if the number is a multiple of the current number, set it to 0
                         if (numbers[j] % numbers[i] == 0) {
                             numbers[j] = 0;
                         }
