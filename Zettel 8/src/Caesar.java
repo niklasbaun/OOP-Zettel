@@ -10,6 +10,10 @@ public class Caesar {
     private static String shiftAlphabet(char a, char b) {
         String shiftedAlphabet = "";
         int shift = alphabet.indexOf(Character.toUpperCase(b)) - alphabet.indexOf(Character.toUpperCase(a));
+        //convert shift to a positve movement
+        if(shift < 0) {
+            shift = alphabet.indexOf(Character.toUpperCase(a)) - alphabet.indexOf(Character.toUpperCase(b));
+        }
         for (int i = 0; i < alphabet.length(); i++) {
             shiftedAlphabet += alphabet.charAt((i + shift) % alphabet.length());
         }
@@ -41,7 +45,7 @@ public class Caesar {
 
 
     public static void main(String[] args) {
-        System.out.println(shiftAlphabet('w', 'z'));
+        System.out.println(shiftAlphabet('E', 'c'));
         System.out.println(decode("HGXBO", 'w', 'z'));
     }
 }
