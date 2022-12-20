@@ -1,14 +1,15 @@
 import java.util.Date;
 
-public class Card {
+public class Card implements Comparable {
     private final String name;
     private final String type;
     private final Date yearOfPublication;
+    private final static String[] types = {"Normal_Monster","Effect_Monster", "Spell", "Trap"};
 
 
-    public Card(String name, String type, Date yearOfPublication) {
+    public Card(String name, int type, Date yearOfPublication) {
         this.name = name;
-        this.type = type;
+        this.type = types[type];
         this.yearOfPublication = yearOfPublication;
     }
 
@@ -24,6 +25,25 @@ public class Card {
         return yearOfPublication;
     }
 
-    //set Card to a specific type
-    //Was für kartentypen gibt es denn?
+    //comparable methods
+    @Override
+    public boolean isSorted(Comparable[] array) {
+        return false;
+    }
+    //Normales Monster → Effekt Monster → Zauberkarte → Fallenkarte
+    @Override
+    public boolean isSmaller(Comparable a, Comparable b) {
+        return false;
+    }
+
+    @Override
+    public boolean isBigger(Comparable a, Comparable b) {
+
+        return false;
+    }
+
+    @Override
+    public boolean isEqual(Comparable a, Comparable b) {
+        return false;
+    }
 }
