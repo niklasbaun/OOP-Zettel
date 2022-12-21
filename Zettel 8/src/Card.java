@@ -2,14 +2,17 @@ import java.util.Date;
 
 public class Card implements Comparable {
     private final String name;
-    private final String type;
+    String type;
+    private final String type = "Effect_Monster";
+    private final String type = "Normal_Monster";
+    private final String type = "Spell";
+    private final String type = "Trap";
+
     private final Date yearOfPublication;
-    private final static String[] types = {"Normal_Monster","Effect_Monster", "Spell", "Trap"};
 
 
-    public Card(String name, int type, Date yearOfPublication) {
+    public Card(String name, Date yearOfPublication) {
         this.name = name;
-        this.type = types[type];
         this.yearOfPublication = yearOfPublication;
     }
 
@@ -25,25 +28,10 @@ public class Card implements Comparable {
         return yearOfPublication;
     }
 
-    //comparable methods
     @Override
-    public boolean isSorted(Comparable[] array) {
-        return false;
-    }
-    //Normales Monster → Effekt Monster → Zauberkarte → Fallenkarte
-    @Override
-    public boolean isSmaller(Comparable a, Comparable b) {
-        return false;
-    }
+    public int compareTo(Object o) {
+        Card c = (Card) o;
 
-    @Override
-    public boolean isBigger(Comparable a, Comparable b) {
-
-        return false;
-    }
-
-    @Override
-    public boolean isEqual(Comparable a, Comparable b) {
-        return false;
+        return 0;
     }
 }
