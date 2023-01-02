@@ -1,11 +1,13 @@
+/**
+ * @author Walter, Annika; Baun, Niklas; Mahlberg, Kilian
+ */
 public class Caesar {
    static String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-
-
-
     /**
      * method to return the shifted alphabet
+     * @param a the starting char
+     * @param b the char which the starting char should equal
+     * @return String the shifted alphabet
      */
     private static String shiftAlphabet(char a, char b) {
         String shiftedAlphabet = "";
@@ -41,12 +43,5 @@ public class Caesar {
             }
         }
         return decoded;
-    }
-
-
-    public static void main(String[] args) {
-        System.out.println(alphabet);
-        System.out.println(shiftAlphabet('E', 'c'));
-        System.out.println(decode("HGXBO", 'w', 'z'));
     }
 }

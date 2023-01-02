@@ -18,6 +18,10 @@ class CardTest {
     Card card8 = null;
     Card card9 = null;
     Card card10 = null;
+
+    /**
+     * setup to create the specific cards and add them to an array
+     */
     @BeforeEach
     void setUp() {
         //create different cards
@@ -53,6 +57,10 @@ class CardTest {
         cards[8] = card9;
         cards[9] = card10;
     }
+
+    /**
+     * test to sort the array with the given rules and check if done correctly
+     */
     @Test
     void compareTo() {
         for (int i = 0; i < cards.length; i++) {

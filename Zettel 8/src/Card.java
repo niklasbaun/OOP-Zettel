@@ -1,12 +1,13 @@
-import java.util.Date;
-
+/**
+ * @author Walter, Annika; Baun, Niklas; Mahlberg, Kilian
+ */
 public class Card implements Comparable {
     private final String name;
     private static String type;
     private final int yearOfPublication;
 
     /**
-     * constructor
+     * constructor of card
      * @param name the name of the card
      * @param yearOfPublication the year of publication of the card
      */
@@ -55,6 +56,15 @@ public class Card implements Comparable {
 
 
     //compare in order of year of publication, then type, then name
+
+    /**
+     * method to compare to objects of type card, by these values
+     *              1. the year of publication
+     *              2. the type of the card in the following order (normal mosnter; effect monster; spell card;  trap card)
+     *              3. by the name in alphabetic order
+     * @param o the object to be compared.
+     * @return integer 0 if equal; negativ num if less and positiv if the object is greater in the specified order
+     */
     @Override
     public int compareTo(Object o) {
         Card c = (Card) o;
