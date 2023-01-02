@@ -20,7 +20,7 @@ public interface Number {
      * @param number the num to add
      */
     default void add(Number number){
-        fromIntValue(toIntValue() + number.toIntValue());
+        fromIntValue(this.toIntValue() + number.toIntValue());
     }
 
     /**
@@ -28,7 +28,7 @@ public interface Number {
      * @param number the num to subtract
      */
     default void subtract(Number number){
-        fromIntValue(toIntValue() - number.toIntValue());
+        fromIntValue(this.toIntValue() - number.toIntValue());
     }
 
     /**
@@ -36,7 +36,7 @@ public interface Number {
      * @param number the num to multiply with
      */
     default void multiply(Number number){
-        fromIntValue(toIntValue() * number.toIntValue());
+        fromIntValue(this.toIntValue() * number.toIntValue());
     }
 
     /**
@@ -44,6 +44,9 @@ public interface Number {
      * @param number the num to  divide by
      */
     default void divide(Number number){
-        fromIntValue(toIntValue() / number.toIntValue());
+        if (number.toIntValue() == 0){
+            throw new IllegalArgumentException("Cannot divide by 0");
+        }
+        fromIntValue(this.toIntValue() / number.toIntValue());
     }
 }

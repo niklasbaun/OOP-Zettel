@@ -62,51 +62,64 @@ class HexadecimalTest {
     }
 
     /**
-     * test add method by adding a value to hex1 to hex5
+     * test add method
      */
     @Test
     void add(){
-        hex1.add(hex1);
-        assertEquals("A", hex1.getValue());
         hex1.add(hex2);
         assertEquals("AC1", hex1.getValue());
-        hex1.add(hex3);
-        assertEquals("5", hex1.getValue());
-        hex1.add(hex4);
-        assertEquals("A3D", hex1.getValue());
-        hex1.add(hex5);
-        assertEquals("5", hex1.getValue());
-        hex2.add(hex2);
-        assertEquals("1578", hex2.getValue());
         hex2.add(hex3);
         assertEquals("ABC", hex2.getValue());
-        hex2.add(hex4);
-        assertEquals("14F4", hex2.getValue());
-        hex2.add(hex5);
-        assertEquals("ABC", hex2.getValue());
-        hex3.add(hex3);
-        assertEquals("0", hex3.getValue());
         hex3.add(hex4);
         assertEquals("A38", hex3.getValue());
-        hex3.add(hex5);
-        assertEquals("0", hex3.getValue());
-        hex4.add(hex4);
-        assertEquals("5", hex4.getValue());
         hex4.add(hex5);
         assertEquals("A38", hex4.getValue());
-        hex4.add(hex5);
-        assertEquals("0", hex5.getValue());
+        hex5.add(hex1);
+        assertEquals("AC1", hex5.getValue());
     }
+    /**
+     * test subtract method
+     */
     @Test
     void subtract(){
-
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            hex1.subtract(hex2);
+        });
+        String expectedMessage = "value must be positive";
+        String actualOutput = exception.getMessage();
+        assertTrue(expectedMessage.contains(actualOutput));
+        hex4.subtract(hex1);
+        hex1.subtract(hex1);
+        assertEquals("0", hex1.getValue());
     }
     @Test
     void multiply(){
+        hex1.multiply(hex2);
+        assertEquals("35AC", hex1.getValue());
+        hex2.multiply(hex3);
+        assertEquals("0", hex2.getValue());
+        hex3.multiply(hex4);
+        assertEquals("0", hex3.getValue());
+        hex4.multiply(hex5);
+        assertEquals("0", hex4.getValue());
+        hex5.multiply(hex1);
+        assertEquals("0", hex5.getValue());
 
     }
     @Test
     void divide(){
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            hex1.divide(hex3);
+        });
+        String expectedMessage = "Cannot divide by 0";
+        String actualOutput = exception.getMessage();
+        assertTrue(expectedMessage.contains(actualOutput));
+        hex4.divide(hex1);
+        assertEquals("20B", hex4.getValue());
+        hex1.divide(hex1);
+        assertEquals("1", hex1.getValue());
+        hex1.divide(hex2);
+        assertEquals("0", hex1.getValue());
 
     }
 }

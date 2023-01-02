@@ -55,7 +55,7 @@ public class Hexadecimal implements Number {
         if (value < 0) {
             throw new IllegalArgumentException("value must be positive");
         } else if (value == 0) {
-            System.out.println("0");
+            this.value = "0";
         } else {
             String hex = "";
             while (value > 0) {
