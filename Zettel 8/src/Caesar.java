@@ -12,7 +12,7 @@ public class Caesar {
     private static String shiftAlphabet(char a, char b) {
         String shiftedAlphabet = "";
         int shift = alphabet.indexOf(Character.toUpperCase(b)) - alphabet.indexOf(Character.toUpperCase(a));
-        //convert shift to a positve movement
+        //convert shift to a positive movement
         if(shift < 0) {
             shift = alphabet.indexOf(Character.toUpperCase(a)) - alphabet.indexOf(Character.toUpperCase(b));
         }
@@ -23,7 +23,6 @@ public class Caesar {
     }
     /**
      * method to decode a text encoded with the caesar cipher
-     * by setting a char to a different char
      * @param coded the coded text
      * @param a letter in the coded text
      * @param b letter in the decoded text
