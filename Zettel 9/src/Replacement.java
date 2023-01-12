@@ -10,35 +10,31 @@ public class Replacement {
      * @param replace the String to replace the search String with
      * @return the source String with the search String replaced with the replace String
      */
-    String replace(String source, String search, String replace){
-        //check if the search String is in the source String
-        if (source.contains(search)){
-            //create a new String to store the result
-            String result = "";
-            //loop through the source String
-            for (int i = 0; i < source.length(); i++) {
-                //check if the current character is the first character of the search String
-                if (source.charAt(i) == search.charAt(0)){
-                    //check if the search String is in the source String
-                    if (source.substring(i, i + search.length()).equals(search)){
-                        //add the replace String to the result String
-                        result += replace;
-                        //skip the search String
-                        i += search.length() - 1;
-                    } else {
-                        //add the current character to the result String
-                        result += source.charAt(i);
-                    }
-                } else {
-                    //add the current character to the result String
-                    result += source.charAt(i);
-                }
-            }
-            //return the result String
-            return result;
-        } else {
-            //return the source String if nothing matches
+    static String replace(String source, String search, String replace){
+        //check if any input is empty
+        if(source == null || search == null || replace == null){
+            return null;
+        }
+        //result String to return
+        String result = "";
+        int pos = 0;
+        //check whether the search string is even in the source string
+        int index = source.indexOf(search);
+        //if not return the source string
+        if(index == -1){
             return source;
         }
+        //if there is then loop until all occurences are replaced
+        while((pos = source.indexOf(search, pos)) > 0){
+            //add the part of the source string before the search string to the result string
+            result += source.substring(0, pos);
+            //add the replace string to the result string
+            result += replace;
+            //remove the part of the source string before the search string and the search string itself
+            source = source.substring(pos + search.length());
+        }
+        //add the rest of the source string to the result string
+        result += source;
+        return result;
     }
 }
