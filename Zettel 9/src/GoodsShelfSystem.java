@@ -26,31 +26,64 @@ public class GoodsShelfSystem {
             return false;
         }
         //create temporary segment for comparison
+        int bestSegment = -1;
         GoodsSegment temp = null;
         //check all segments
-        for (int i = 0; i < Shelf.length; i++) {
+        for (int i = 0; i < this.Shelf.length; i++) {
             //check if crate fits in compartment and other requirements are met
-            if ((Shelf[i].hasEmpty() >= 0) && (Shelf[i].getTotalWeight() + crate.weight <= Shelf[i].maxWeight) && (Shelf[i].crateFits(crate))) {
+            if ((this.Shelf[i].hasEmpty() >= 0) && (this.Shelf[i].getTotalWeight() + crate.weight <= this.Shelf[i].maxWeight) && (this.Shelf[i].crateFits(crate))) {
                 //if temp is not set
                 if (temp != null) {
-                    //if current segment fits better then temp segme
-                    if ((Shelf[i].width < temp.width) || (Shelf[i].depth < temp.depth)) {
-                        temp = Shelf[i];
+                    //if current segment fits better then temp segment
+                    if ((this.Shelf[i].width < temp.width) || (this.Shelf[i].depth < temp.depth)|| (this.Shelf[i].height < temp.height)) {
+                        bestSegment = i;
+                        temp = this.Shelf[i];
                     }
                 //set initial temp segment
                 }else {
-                    temp = Shelf[i];
+                    bestSegment = i;
+                    temp = this.Shelf[i];
                 }
             }
         }
         //add current temp
         if(temp != null){
+            System.out.println("Crate was added to segment " + bestSegment);
             temp.addCrate(crate);
             return true;
         }
         //nothing found
         else{
+            System.out.println("No fitting segment found");
             return false;
         }
+    }
+
+    /**
+     * find a crate in the shelf
+     *              1. check all shelfs
+     *              2. check if crate is in compartment
+     *              3. if crate is found return the segment and compartment
+     *              4. if crate is not found return null
+     * @param crate the crate to find
+     * @return the segment and compartment where the crate is
+     */
+    public int[] findCrate(GoodsCrate crate){
+        if(crate == null){
+            System.out.println("No crate was inputted");
+            return null;
+        }
+        //check all segments
+        for(int i = 0; i < this.Shelf.length; i++){
+            //check if crate is in compartment
+            int compartment = this.Shelf[i].findCrate(crate);
+            if(compartment != -1){
+                //crate is found
+                int[] result = {i, compartment};
+                return result;
+            }
+        }
+        //crate is not found
+        return null;
     }
 }

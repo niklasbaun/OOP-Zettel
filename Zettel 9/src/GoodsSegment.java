@@ -61,7 +61,7 @@ public class GoodsSegment {
 
     /**
      * method to check if a compartment is empty and which one
-     * @return true if the compartment is empty; false if not
+     * @return the compartment number if empty; -1 if not
      */
     public int hasEmpty(){
         int i = 0;
@@ -73,6 +73,11 @@ public class GoodsSegment {
         }
         return -1;
     }
+
+    /**
+     * method to get the total weight of all crates in the segment
+     * @return the total weight of all crates in the segment
+     */
     public double getTotalWeight(){
         double totalWeight = 0;
         for(GoodsCrate crate : compartments){
@@ -102,5 +107,20 @@ public class GoodsSegment {
             return false;
         }
         return true;
+    }
+
+    /**
+     * method to find a crate in the segment
+     * @param crate the crate to find
+     */
+    public int findCrate(GoodsCrate crate){
+        int i = 0;
+        for(GoodsCrate crateInSegment : compartments){
+            if(crateInSegment == crate){
+                return i;
+            }
+            i++;
+        }
+        return -1;
     }
 }
