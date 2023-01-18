@@ -1,5 +1,5 @@
 public class DFA extends GenericAutomaton {
-
+    String current;
     /**
      * constructor for GenericAutomaton
      *
@@ -7,5 +7,15 @@ public class DFA extends GenericAutomaton {
      */
     public DFA(Alphabet alphabet) {
         super(alphabet);
+    }
+
+    @Override
+    void reset() {
+
+    }
+
+    @Override
+    boolean isAccepting() {
+        return false;
     }
 }
