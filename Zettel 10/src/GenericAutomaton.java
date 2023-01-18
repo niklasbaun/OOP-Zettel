@@ -66,11 +66,32 @@ public abstract class GenericAutomaton {
      * @param transition the transition to add
      */
     protected void addTransition(Transition transition){
+        //check if transition state is not in the States of the automaton
+        boolean containsA = false;
+        boolean containsB = false;
         for (State s: states) {
-            //check if none of the states matches either start or end of transition
-            if (){
-
+            if(transition.Start == s.ID){
+                containsA = true;
             }
+            if (transition.End == s.ID){
+                containsB = true;
+            }
+        }
+        //check the states are in the Array
+        if(containsA == false || containsB == false){
+            throw new StateExceptions("input State does not exist in Automaton \n" + "State Start exists: " + containsA + "\n" + "State End exists: " + containsB)
+        }
+
+        //check if letter of transition is in Alphabet
+        boolean containsSymbol = false;
+        for (Character c: alphabet.alphabet) {
+            if(transition.Symbol == alphabet.alphabet[c]){
+                containsSymbol = true;
+            }
+        }
+        //check if Symbol was in the Array
+        if (containsSymbol = false){
+            throw new AlphabetException("Alphbet does not contain the searched Symbol");
         }
     }
 }
