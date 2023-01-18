@@ -13,7 +13,7 @@ public abstract class GenericAutomaton {
         this.transitions = new Transition[0];
         this.alphabet = alphabet;
         this.start = "";
-
+    }
     /**
      * abstract method to reset the automaton
      */
@@ -25,17 +25,37 @@ public abstract class GenericAutomaton {
      */
     abstract boolean isAccepting();
 
-    void addState(State state, boolean isStart){
+    /**
+     * method to add a state to the automaton
+     */
+    public void addState(State state, boolean isStart){
         // add state to states
-        for (states: state) {
+        for (State s: states) {
             if (state.ID.equals(state.ID)) {
-                throw new IllegalArgumentException("State already exists");
+                throw new StateExceptions("Input State already exists in the Automaton");
             }
         }
         State[] newStates = new State[states.length + 1];
         System.arraycopy(states, 0, newStates, 0, states.length);
         newStates[states.length] = state;
         states = newStates;
-
+        //set start the new state ID, if the user wants it
+        if(isStart) {
+            start = state.ID;
         }
+    }
+
+    /**
+     * method to find a State by a given ID
+     * @param id the id to search for
+     * @return the searched state or null if the state is not found
+     */
+    public State findState(String id){
+        for (State s: states) {
+            if (s.ID.equals(id)) {
+                return s;
+            }
+        }
+        return  null;
+    }
 }
