@@ -58,4 +58,19 @@ public abstract class GenericAutomaton {
         }
         return  null;
     }
+
+    /**
+     * method to add a transition to the transition array
+     *      1. if a state is not in the automaton throw StateDoesNotExistException
+     *      2. if symbol is not in alphabet throw SymbolNotInAlphabetException
+     * @param transition the transition to add
+     */
+    protected void addTransition(Transition transition){
+        for (State s: states) {
+            //check if none of the states matches either start or end of transition
+            if (){
+
+            }
+        }
+    }
 }
