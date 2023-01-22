@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public abstract class GenericAutomaton {
 
     State[] states;
@@ -29,11 +31,15 @@ public abstract class GenericAutomaton {
      * method to add a state to the automaton
      */
     public void addState(State state, boolean isStart){
-        // add state to states
-        for (State s: states) {
-            if (state.ID.equals(state.ID)) {
-                throw new StateExceptions("Input State already exists in the Automaton");
+        try{
+            // add state to states
+            for (State s: states) {
+                if (state.ID.equals(state.ID)) {
+                    throw new StateExceptions("Input State already exists in the Automaton");
+                }
             }
+        } catch (StateExceptions e) {
+            System.out.println(e.getMessage());
         }
         State[] newStates = new State[states.length + 1];
         System.arraycopy(states, 0, newStates, 0, states.length);
@@ -69,29 +75,42 @@ public abstract class GenericAutomaton {
         //check if transition state is not in the States of the automaton
         boolean containsA = false;
         boolean containsB = false;
-        for (State s: states) {
-            if(transition.Start == s.ID){
-                containsA = true;
+        try {
+            //check if the given states are in the array
+            for (State s: states) {
+                if(transition.Start == s.ID){
+                    containsA = true;
+                }
+                if (transition.End == s.ID){
+                    containsB = true;
+                }
             }
-            if (transition.End == s.ID){
-                containsB = true;
-            }
-        }
-        //check the states are in the Array
-        if(containsA == false || containsB == false){
-            throw new StateExceptions("input State does not exist in Automaton \n" + "State Start exists: " + containsA + "\n" + "State End exists: " + containsB)
-        }
 
-        //check if letter of transition is in Alphabet
-        boolean containsSymbol = false;
-        for (Character c: alphabet.alphabet) {
-            if(transition.Symbol == alphabet.alphabet[c]){
-                containsSymbol = true;
+            //check the states are in the Array
+            if(containsA == false || containsB == false){
+                throw new StateExceptions("input State does not exist in Automaton \n" + "State Start exists: " + containsA + "\n" + "State End exists: " + containsB);
             }
+
+            //check if letter of transition is in Alphabet
+            boolean containsSymbol = false;
+            for (Character c: alphabet.alphabet) {
+                if(transition.Symbol == alphabet.alphabet[c]){
+                    containsSymbol = true;
+                }
+            }
+            //check if Symbol was in the Array
+            if (containsSymbol = false){
+                throw new AlphabetException("Alphabet does not contain the searched Symbol");
+            }
+        } catch (StateExceptions e){
+            System.out.println(e.getMessage());
+        } catch (AlphabetException e){
+            System.out.println(e.getMessage());
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
-        //check if Symbol was in the Array
-        if (containsSymbol = false){
-            throw new AlphabetException("Alphbet does not contain the searched Symbol");
-        }
+        //if everything went smoothly add transition to transition array
+        transitions = Arrays.copyOf(transitions, transitions.length + 1);
+        transitions[transitions.length - 1] = transition;
     }
 }

@@ -104,8 +104,8 @@ class HexadecimalTest {
         assertEquals("0", hex4.getValue());
         hex5.multiply(hex1);
         assertEquals("0", hex5.getValue());
-
     }
+
     @Test
     void divide(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
