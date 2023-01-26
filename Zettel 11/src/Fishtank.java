@@ -1,0 +1,73 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Fishtank {
+    private ArrayList<Seacreature> creatures;
+
+    public Fishtank() {
+        creatures = new ArrayList<>();
+    }
+
+    /**
+     * Adds a creature to the fishtank.
+     * @param creature the creature to be added
+     */
+    private void addCreature(Seacreature creature) {
+        try {
+            if (creature == null) {
+                throw new IllegalArgumentException("Creature must not be null.");
+            }
+            if (creature instanceof Leviathan) {
+                throw new SizeException("Leviathans are not allowed in the fishtank.");
+            }
+            //if these are not met, add the creature to the tank
+            creatures.add(creature);
+        } catch (SizeException | IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    /**
+     * method to filter the aquarium for a specific type of creature
+     * @param creature the type of creature to be filtered
+     *             (e.g. "Herbivore", "Carnivore", "Leviathan")
+     * @return a list of all creatures of the given type
+     */
+    public <T> List<T> filterByType(T creature) {
+        //create new list to store the filtered creatures
+        List<T> filteredCreatures = new ArrayList<>();
+        //iterate over all creatures in the tank
+        for (Seacreature seacreature : creatures) {
+            //if the creature is of the given type, add it to the list
+            if (seacreature.getClass().equals(creature.getClass())) {
+                filteredCreatures.add((T) seacreature);
+            }
+        }
+        return filteredCreatures;
+    }
+
+    /**
+     * method to filter the aquarium for a specific size range of creature
+     * @param sizeL the lowest size of the creature to be filtered
+     * @param sizeH the highest size of the creature to be filtered
+     * @return a list of all creatures of the given size
+     */
+    public <T> List<T> filterBySize(int sizeL, int sizeH) {
+        //create new list to store the filtered creatures
+        List<T> filteredCreatures = new ArrayList<>();
+        //iterate over all creatures in the tank
+        for (Seacreature seacreature : creatures) {
+            //if the creature is of the given size, add it to the list
+            if (seacreature.getSize() >= sizeL && seacreature.getSize() <= sizeH) {
+                filteredCreatures.add((T) seacreature);
+            }
+        }
+        return filteredCreatures;
+    }
+
+    /**
+     * method to
+     */
+}
+
