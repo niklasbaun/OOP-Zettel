@@ -12,7 +12,7 @@ public class Fishtank {
      * Adds a creature to the fishtank.
      * @param creature the creature to be added
      */
-    private void addCreature(Seacreature creature) {
+    void addCreature(Seacreature creature) {
         try {
             if (creature == null) {
                 throw new IllegalArgumentException("Creature must not be null.");
@@ -25,7 +25,14 @@ public class Fishtank {
         } catch (SizeException | IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+    }
 
+    /**
+     * method to return the number of creatures in the tank
+     * @return the number of creatures in the tank
+     */
+    public int getNumOfCreatures() {
+        return creatures.size();
     }
 
     /**
