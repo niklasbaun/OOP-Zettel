@@ -47,7 +47,7 @@ public class Fishtank {
         //iterate over all creatures in the tank
         for (Seacreature seacreature : creatures) {
             //if the creature is of the given type, add it to the list
-            if (seacreature.getClass().equals(creature.getClass())) {
+            if (seacreature instanceof (creature)) {
                 filteredCreatures.add((T) seacreature);
             }
         }
