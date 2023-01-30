@@ -1,5 +1,8 @@
 import java.util.Arrays;
 
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Niklas
+ */
 public class DFA extends GenericAutomaton {
     String current;
     /**

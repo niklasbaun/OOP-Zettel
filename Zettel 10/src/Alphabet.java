@@ -1,7 +1,14 @@
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Niklas
+ */
 public class Alphabet {
 
     Character[] alphabet;
 
+    /**
+     * Constructor for Alphabet
+     * @param alphabet is a Character[] containing all symbols in the alphabet.
+     */
     public Alphabet(Character[] alphabet) {
         this.alphabet = alphabet;
     }
