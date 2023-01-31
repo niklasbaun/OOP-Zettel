@@ -4,6 +4,11 @@ import java.util.Iterator;
 import java.util.function.Predicate;
 
 public class Lambda {
+    /**
+     * Removes all elements from the list that satisfy the filter.
+     * @param list the list to be filtered
+     * @param filter the filter to be applied
+     */
 
     public static <T> void removeIf(ArrayList<T> list, Predicate<T> filter){
         Iterator iter = list.iterator();
@@ -13,13 +18,24 @@ public class Lambda {
         }
     }
 
+    /**
+     * Sorts the list according to the comparator.
+     * @param list the list to be sorted
+     * @param comparator the comparator to be used
+     */
     public static <T> void sortBy(ArrayList<T> list, Comparator<T> comparator){
         list.sort(comparator);
     }
 
+    /**
+     * Returns a string representation of the list.
+     * @param list the list to be converted to a string
+     * @return a string representation of the list
+     */
     public static <T> String listToString(ArrayList<T> list){
-        list.forEach(listelement -> );
-        return null;
+        StringBuilder sb = new StringBuilder();
+        list.forEach(t -> sb.append(t.toString()).append("\n"));
+        return sb.toString();
     }
 }
 

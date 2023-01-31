@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Niklas
+ */
 class FishtankTest {
     Fishtank fishtank;
     //whole lot of creatures

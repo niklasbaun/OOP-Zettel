@@ -1,3 +1,6 @@
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Niklas
+ */
 public class Pampeel extends Carnivore{
     /**
      * Constructor for Pampeel with a size only allowed to be between 20m and 22m.

@@ -1,3 +1,6 @@
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Niklas
+ */
 public abstract class Herbivore extends Seacreature{
 
     public Herbivore(int size) {

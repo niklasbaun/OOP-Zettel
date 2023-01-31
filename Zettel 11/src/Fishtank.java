@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Niklas
+ */
 public class Fishtank {
     private ArrayList<Seacreature> creatures;
 

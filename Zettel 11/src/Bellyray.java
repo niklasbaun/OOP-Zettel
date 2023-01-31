@@ -1,3 +1,6 @@
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Niklas
+ */
 public class Bellyray extends Herbivore{
 
     /**

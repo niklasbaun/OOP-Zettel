@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Aufgabe2_1 {
     public static void main(String[] args){
         //a)
@@ -25,4 +27,5 @@ public class Aufgabe2_1 {
     static boolean isEqual(String word1, String word2){
         return word1 == word2;
     }
+
 }

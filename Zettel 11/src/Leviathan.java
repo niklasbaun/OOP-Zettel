@@ -1,3 +1,6 @@
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Niklas
+ */
 public abstract class Leviathan extends Seacreature{
     public Leviathan(int size) {
         super(size);

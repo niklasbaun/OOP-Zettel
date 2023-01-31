@@ -1,3 +1,6 @@
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Niklas
+ */
 public abstract class Seacreature {
     //size is measured in centimeters
     private int size;

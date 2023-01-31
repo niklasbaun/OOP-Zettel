@@ -1,3 +1,6 @@
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Niklas
+ */
 public abstract class Carnivore extends Seacreature {
 
     public Carnivore(int size) {
