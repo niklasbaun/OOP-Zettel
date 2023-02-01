@@ -9,12 +9,14 @@ public class Lambda {
      * @param list the list to be filtered
      * @param filter the filter to be applied
      */
-
     public static <T> void removeIf(ArrayList<T> list, Predicate<T> filter){
         Iterator iter = list.iterator();
 
         while (iter.hasNext()){
-            list.removeIf(filter);
+            T t = (T) iter.next();
+            if (filter.test(t)){
+                iter.remove();
+            }
         }
     }
 
@@ -34,7 +36,9 @@ public class Lambda {
      */
     public static <T> String listToString(ArrayList<T> list){
         StringBuilder sb = new StringBuilder();
-        list.forEach(t -> sb.append(t.toString()).append("\n"));
+        for (T t : list){
+            sb.append(t.toString()).append("\n");
+        }
         return sb.toString();
     }
 }
