@@ -8,6 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
+
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Nikas
+ */
 public class IOStreams {
 
     /**

@@ -5,6 +5,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Nikas
+ */
 class LambdaTest {
     //create objects of arraylist
     String s1 = "Hello";

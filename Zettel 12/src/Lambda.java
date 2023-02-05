@@ -3,6 +3,9 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.function.Predicate;
 
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Nikas
+ */
 public class Lambda {
     /**
      * Removes all elements from the list that satisfy the filter.
