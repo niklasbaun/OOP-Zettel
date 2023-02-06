@@ -9,7 +9,6 @@ public class Lambda {
      * @param list the list to be filtered
      * @param filter the filter to be applied
      */
-
     public static <T> void removeIf(ArrayList<T> list, Predicate<T> filter){
         Iterator iter = list.iterator();
 

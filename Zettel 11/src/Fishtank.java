@@ -44,18 +44,20 @@ public class Fishtank {
      *             (e.g. "Herbivore", "Carnivore", "Leviathan")
      * @return a list of all creatures of the given type
      */
-    public <T> List<T> filterByType(T creature) {
+    public <T extends Seacreature> List<T> filterByType(T creature) {
         //create new list to store the filtered creatures
         List<T> filteredCreatures = new ArrayList<>();
         //iterate over all creatures in the tank
-        for (Seacreature seacreature : creatures) {
+        for (Seacreature thing : creatures) {
             //if the creature is of the given type, add it to the list
-            if (seacreature instanceof (creature)) {
-                filteredCreatures.add((T) seacreature);
+            if (thing.getClass().isInstance(creature)) {
+                filteredCreatures.add((T) thing);
             }
         }
         return filteredCreatures;
     }
+
+
 
     /**
      * method to filter the aquarium for a specific size range of creature
@@ -75,9 +77,5 @@ public class Fishtank {
         }
         return filteredCreatures;
     }
-
-    /**
-     * method to
-     */
 }
 
