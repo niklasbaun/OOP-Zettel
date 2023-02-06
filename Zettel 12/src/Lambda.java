@@ -3,6 +3,9 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.function.Predicate;
 
+/**
+ * @author Mahlberg, Kilian; Walter, Annika; Baun, Nikas
+ */
 public class Lambda {
     /**
      * Removes all elements from the list that satisfy the filter.
@@ -13,7 +16,10 @@ public class Lambda {
         Iterator iter = list.iterator();
 
         while (iter.hasNext()){
-            list.removeIf(filter);
+            T t = (T) iter.next();
+            if (filter.test(t)){
+                iter.remove();
+            }
         }
     }
 
@@ -33,7 +39,9 @@ public class Lambda {
      */
     public static <T> String listToString(ArrayList<T> list){
         StringBuilder sb = new StringBuilder();
-        list.forEach(t -> sb.append(t.toString()).append("\n"));
+        for (T t : list){
+            sb.append(t.toString()).append("\n");
+        }
         return sb.toString();
     }
 }
