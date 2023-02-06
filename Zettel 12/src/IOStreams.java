@@ -35,7 +35,7 @@ public class IOStreams {
 
 
     /**
-     * method to count how many times a  each word appears in a Stream
+     * method to count how many times each word appears in a Stream
      * @param words thge input stream
      * @return a Map with the words and their count
      */

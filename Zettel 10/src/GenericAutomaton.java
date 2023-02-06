@@ -2,10 +2,10 @@ import java.util.Arrays;
 
 public abstract class GenericAutomaton {
 
-    State[] states;
-    Transition[] transitions;
-    Alphabet alphabet;
-    String start;
+   protected State[] states;
+   protected Transition[] transitions;
+   protected Alphabet alphabet;
+   protected String start;
 
     /**
      * constructor for GenericAutomaton
